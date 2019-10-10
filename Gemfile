@@ -52,3 +52,21 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+# devise - user authentication.
+gem "devise"
+# image handling.
+gem "carrierwave"
+# support.
+gem "bootstrap-sass"
+# fonts.
+gem "font-awesome-rails"
+# bundle install in terminal before starting project.
+
+
+
+
+
+
+
