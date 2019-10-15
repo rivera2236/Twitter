@@ -1,6 +1,7 @@
 class TwitsController < ApplicationController
   before_action :set_twit, only: [:show, :edit, :update, :destroy]
-
+  # before_action :authenticate_user!
+  
   # GET /twits
   # GET /twits.json
   def index
@@ -24,7 +25,30 @@ class TwitsController < ApplicationController
   # POST /twits
   # POST /twits.json
   def create
-    @twit = Twit.new(twit_params)
+    @twit = Twit.create(twit_params)
+
+    message_arr = @twit.message.split
+
+    message_arr.each_with_index do |word, index|
+      if word[0] == "#"
+        #create a new instance of a Tag
+        if Tag.pluck(:phrase).include?(word)
+          #save that Tag as a variable (to use in TweetTag creation)
+          #tag already exists
+          tag = Tag.find_by(phrase: word)
+        else
+          #create a new instance of Tag
+          #tag doesn't exist
+          tag = Tag.create(phrase: word)
+        end
+        # twit_tag = TwitTag.create(twit_id: @twit.id, tag_id: tag.id)
+        TwitTag.create(twit_id: @twit.id, tag_id: tag.id)
+        message_arr[index] = "<a href='/tag_twits?id=#{tag.id}'>#{word}</a>"
+      end
+    end
+
+    new_message = message_arr.join(" ")
+    @twit.update(message: new_message)
 
     respond_to do |format|
       if @twit.save
@@ -69,6 +93,6 @@ class TwitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def twit_params
-      params.require(:twit).permit(:message, :user_id)
+      params.require(:twit).permit(:message, :user_id, :link)
     end
 end
