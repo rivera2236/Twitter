@@ -1,6 +1,6 @@
 class TwitsController < ApplicationController
   before_action :set_twit, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!
+  # before_action :authenticate_user! GOES IN APPLICATION_CONTROLLER.RB - BETTER PLACEMENT.
   
   # GET /twits
   # GET /twits.json
