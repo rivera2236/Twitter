@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   resources :twits
   devise_for :users
   get 'tag_twits' => 'epicenter#tag_twits'
+  get 'all_users' => 'epicenter#all_users'
+
+  get 'following' => 'epicenter#following'
+  get 'followers' => 'epicenter#followers'
+
   # root "twits#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
