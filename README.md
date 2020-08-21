@@ -1,9 +1,14 @@
-# README
+# Mock Version of Twitter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# This was a fun project we worked in class and we were encouraged build upon it for practice. 
 
-Things you may want to cover:
+# To start simply run "rails s" and log in or sign up. 
+
+# Please do not enter any sensivtive information. 
+
+# In the event that the site seems to load for an unsusually long time after loging in, simply REFRESH the page and you should go to profile. 
+
+# This project uses:
 
 * Ruby version
 
@@ -13,12 +18,3 @@ Things you may want to cover:
 
 * Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
